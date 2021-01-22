@@ -6,11 +6,19 @@ class regexp {
 	__New(param_default:="", param_flags:="") {
 
 		param_flags := StrSplit(param_flags)
+		this.g := false, this.i := false, this.m := false
 		for _, value in param_flags {
-			; do nothing
+			if (value == "g" || value == "G") {
+				this.g := true
+			}
+			if (value == "i" || value == "I") {
+				this.i := true
+			}
+			if (value == "m" || value == "M") {
+				this.m := true
+			}
 		}
 		this.data := []
-		this.flags := param_flags ; needs validation before assignment
 
 		; workspace
 		this.lastIndex := 0

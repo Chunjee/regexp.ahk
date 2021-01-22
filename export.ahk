@@ -1,9 +1,20 @@
-class regexp {	; --- Static Variables ---	static flags := {i: true, g:false, m:false}	__New(param_default:="", param_flags:="") {		param_flags := StrSplit(param_flags)		for _, value in param_flags {			; do nothing		}		this.data := []		this.flags := param_flags ; needs validation before assignment		; workspace		this.lastIndex := 0		this.throwExceptions := true		if (param_default != "") {			this.pattern := param_default		}	}	; --- Static Methods ---	; /--\--/--\--/--\--/--\--/--\
+class regexp {	; --- Static Variables ---	static flags := {i: true, g:false, m:false}	__New(param_default:="", param_flags:="") {		param_flags := StrSplit(param_flags)		this.g := false, this.i := false, this.m := false		for _, value in param_flags {			if (value == "g" || value == "G") {				this.g := true			}			if (value == "i" || value == "I") {				this.i := true			}			if (value == "m" || value == "M") {				this.m := true			}		}		this.data := []		; workspace		this.lastIndex := 0		this.throwExceptions := true		if (param_default != "") {			this.pattern := param_default		}	}	; --- Static Methods ---	; /--\--/--\--/--\--/--\--/--\
 	; Internal functions
 	; \--/--\--/--\--/--\--/--\--/
 
 	_internal(param_key) {
 
+	}
+
+	_join(param_array, param_sepatator:="") {
+		for l_key, l_value in param_array {
+			if (l_key == 1) {
+				l_string := "" l_value
+				continue
+			}
+			l_string .= param_sepatator l_value
+		}
+		return l_string
 	}
 	_typeException() {
 		if (this.throwExceptions == true) {
@@ -85,5 +96,18 @@ class regexp {	; --- Static Variables ---	static flags := {i: true, g:false, 
 			return true
 		}
 		return false
+	}
+	toString() {
+		flags := ""
+		if (this.g) {
+			flags .= "g"
+		}
+		if (this.i) {
+			flags .= "i"
+		}
+		if (this.m) {
+			flags .= "m"
+		}
+		return "/" this.pattern "/" flags
 	}
 }
