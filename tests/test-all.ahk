@@ -13,7 +13,8 @@ assert := new unittesting()
 QPC(1)
 
 assert.label("internal()")
-; assert.test(exampleDict._hash(2000), 2000)
+assert.test(re._join([1,2,3]), "123")
+assert.test(re._join([1]), "1")
 
 ; omit
 
@@ -23,12 +24,6 @@ assert.label("internal()")
 
 
 assert.label("typeException()")
-
-assert.label("backup()")
-
-
-; omit
-
 
 assert.label("exec()")
 assert.label(".test - Simple use cases")
@@ -66,6 +61,21 @@ assert.test(re.lastIndex, 11)
 re.test(string)
 assert.test(re.lastIndex, 21)
 
+
+assert.label("toString()")
+re := new regexp("123")
+assert.test(re.toString(), "/123/")
+
+re := new regexp("123", "g")
+assert.test(re.toString(), "/123/g")
+
+
+; omit
+re := new regexp("123", "i")
+assert.test(re.toString(), "/123/i")
+
+re := new regexp("123", "m")
+assert.test(re.toString(), "/123/m")
 ;; Display test results in GUI
 speed := QPC(0)
 assert.fullreport()

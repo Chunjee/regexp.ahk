@@ -12,8 +12,8 @@ settings.objectName := "re"
 aliasMap := {}
 
 
-SetWorkingDir, "\..\" A_ScriptDir
 ; FilePaths
+SetWorkingDir, "\..\" A_ScriptDir
 Readme_File := A_WorkingDir "\docs\README.md"
 lib_File := A_WorkingDir "\export.ahk"
 test_File := A_WorkingDir "\tests\test-all.ahk"
