@@ -1,9 +1,11 @@
-Executes a search for a match between a regular expression and a specified string.
+Tests for a match in a string.
 
 ## Arguments
-none
+| Argument       | Type         | Description  |
+| :------------- | :----------- | :----------- |
+|  string        | string       | Required. The string to be searched |
 
 
 
 ## Returns
-(array): A new clone of the dictionary.
+(boolean): `true` if a pattern match was found, else `false`
