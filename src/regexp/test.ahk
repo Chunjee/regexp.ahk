@@ -6,12 +6,14 @@ test(param_string) {
 	; prepare
 	; Todo
 	; differenciate between golbal and singular
-	if (this.lastIndex != 0 && param_string != this._lastSearch) {
+	if (this.lastIndex != 0 && param_string != this.input) {
 		this.lastIndex := 0
 	}
-	this._lastSearch := param_string
+	this.input := param_string
+
+
 	; create
-	l_searchPosition := RegExMatch(this._lastSearch, "O)(" this.pattern ")", l_match, this.lastIndex + 1)
+	l_searchPosition := RegExMatch(this.input, "O)(" this.pattern ")", l_match, this.lastIndex + 1)
 	if (l_searchPosition != 0) {
 		this.lastIndex := l_searchPosition
 		return true

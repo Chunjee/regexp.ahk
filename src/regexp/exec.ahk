@@ -4,12 +4,13 @@ exec(param_string) {
 	}
 
 	; prepare
+	this.input := param_string
 
 
 	; create
 	l_searchPosition := 1
 	oMatch := []
-	while l_searchPosition := RegExMatch(param_string, "O)(" this.pattern ")", l_match, l_searchPosition) {
+	while l_searchPosition := RegExMatch(this.input, "O)(" this.pattern ")", l_match, l_searchPosition) {
 		; Count += 1
 		vPosLast := l_searchPosition
 		l_searchPosition += StrLen(l_match.0)
