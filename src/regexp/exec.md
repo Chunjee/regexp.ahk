@@ -3,7 +3,7 @@ This method returns the matched text if it finds a match, otherwise it returns `
 ## Arguments
 | Argument       | Type         | Description  |
 | :------------- | :----------- | :----------- |
-|  value*        | string       | Required. The string to be searched |
+|  string*        | string       | Required. The string to be searched |
 
 
 

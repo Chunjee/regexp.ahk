@@ -3,7 +3,7 @@ Tests for a match in a string.
 ## Arguments
 | Argument       | Type         | Description  |
 | :------------- | :----------- | :----------- |
-|  string        | string       | Required. The string to be searched |
+|  string*       | string       | Required. The string to be searched |
 
 
 
