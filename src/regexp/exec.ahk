@@ -11,7 +11,7 @@ exec(param_string) {
 	l_searchPosition := 1
 	oMatch := []
 	while l_searchPosition := RegExMatch(this.input, "O)(" this.pattern ")", l_match, l_searchPosition) {
-		; Count += 1
+		; oMatch.input := this.input
 		vPosLast := l_searchPosition
 		l_searchPosition += StrLen(l_match.0)
 		; prevent infinite loop
@@ -40,3 +40,8 @@ assert.test(re.exec("Don't Panic"), [])
 
 
 ; omit
+re := new regexp("(ime)")
+string := "Time is an illusion. Lunchtime doubly so"
+result := re.exec(string)
+assert.test(result, ["ime", "ime"])
+assert.test(result)

@@ -33,7 +33,7 @@ class regexp {	; --- Static Variables ---	static flags := {i: true, g:false, 
 		l_searchPosition := 1
 		oMatch := []
 		while l_searchPosition := RegExMatch(this.input, "O)(" this.pattern ")", l_match, l_searchPosition) {
-			; Count += 1
+			; oMatch.input := this.input
 			vPosLast := l_searchPosition
 			l_searchPosition += StrLen(l_match.0)
 			; prevent infinite loop

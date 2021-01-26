@@ -36,6 +36,11 @@ assert.test(re.exec("Don't Panic"), [])
 
 
 ; omit
+re := new regexp("(ime)")
+string := "Time is an illusion. Lunchtime doubly so"
+result := re.exec(string)
+assert.test(result, ["ime", "ime"])
+assert.test(result)
 
 
 assert.label("test()")
