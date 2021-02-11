@@ -1,14 +1,7 @@
-# Properties
 
-The following properties exist and are updated as an instance of the class is used:
+## API
 
-#### .lastIndex
-The lastIndex property specifies the index at which to start the next match.
-
-This property returns an integer that specifies the character position immediately after the last match found by `.exec` or `.test` methods.
-
-----
-
+Including the module provides a class `regexp` with ---- methods:
 
 # **Regexp methods**
 ## .exec
@@ -17,7 +10,7 @@ This method returns the matched text if it finds a match, otherwise it returns `
 #### Arguments
 | Argument       | Type         | Description  |
 | :------------- | :----------- | :----------- |
-|  value*        | string       | Required. The string to be searched |
+|  string*        | string       | Required. The string to be searched |
 
 
 
@@ -30,10 +23,8 @@ This method returns the matched text if it finds a match, otherwise it returns `
 ```autohotkey
 re := new regexp("Lunchtime")
 string := "Time is an illusion. Lunchtime doubly so"
-
 result := re.exec(string)
 assert.test(result, ["Lunchtime"])
-
 re.exec("Don't Panic")
 ; => []
 
@@ -47,7 +38,7 @@ Tests for a match in a string.
 #### Arguments
 | Argument       | Type         | Description  |
 | :------------- | :----------- | :----------- |
-|  string        | string       | Required. The string to be searched |
+|  string*       | string       | Required. The string to be searched |
 
 
 
@@ -58,7 +49,6 @@ Tests for a match in a string.
 #### Example
 
 ```autohotkey
-assert.label(".test - Simple use cases")
 re := new regexp("Lunchtime")
 re.test("Time is an illusion. Lunchtime doubly so")
 ; => true
@@ -77,6 +67,15 @@ re.lastIndex
 
 
 ## .toString
+Return the string value of the regular expression.
+
+#### Arguments
+Does not accept any arguments.
+
+
+
+#### Returns
+(string): The string value of the regular expression
 
 
 #### Example
