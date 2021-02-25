@@ -1,4 +1,40 @@
-class regexp {	; --- Static Variables ---	static flags := {i: true, g:false, m:false}	__New(param_default:="", param_flags:="") {		param_flags := StrSplit(param_flags)		this.g := false, this.i := false, this.m := false		for _, value in param_flags {			if (value == "g" || value == "G") {				this.g := true			}			if (value == "i" || value == "I") {				this.i := true			}			if (value == "m" || value == "M") {				this.m := true			}		}		this.data := []		; workspace		this.lastIndex := 0		this.throwExceptions := true		if (param_default != "") {			this.pattern := param_default		}	}	; --- Static Methods ---	; /--\--/--\--/--\--/--\--/--\
+class regexp {
+
+	; --- Static Variables ---
+	static flags := {i: true, g:false, m:false}
+
+	__New(param_default:="", param_flags:="") {
+
+		param_flags := StrSplit(param_flags)
+		this.g := false, this.i := false, this.m := false
+		for _, value in param_flags {
+			if (value == "g" || value == "G") {
+				this.g := true
+			}
+			if (value == "i" || value == "I") {
+				this.i := true
+			}
+			if (value == "m" || value == "M") {
+				this.m := true
+			}
+		}
+		this.data := []
+
+		; workspace
+		this.lastIndex := 0
+
+
+		this.throwExceptions := true
+		if (param_default != "") {
+			this.pattern := param_default
+		}
+	}
+
+
+
+
+	; --- Static Methods ---
+	; /--\--/--\--/--\--/--\--/--\
 	; Internal functions
 	; \--/--\--/--\--/--\--/--\--/
 
@@ -32,7 +68,7 @@ class regexp {	; --- Static Variables ---	static flags := {i: true, g:false, 
 		; create
 		l_searchPosition := 1
 		oMatch := []
-		while l_searchPosition := RegExMatch(this.input, "O)(" this.pattern ")", l_match, l_searchPosition) {
+		while (l_searchPosition := RegExMatch(this.input, "O)(" this.pattern ")", l_match, l_searchPosition)) {
 			; oMatch.input := this.input
 			vPosLast := l_searchPosition
 			l_searchPosition += StrLen(l_match.0)
@@ -64,8 +100,8 @@ class regexp {	; --- Static Variables ---	static flags := {i: true, g:false, 
 
 		; create
 		l_searchPosition := RegExMatch(this.input, "O)(" this.pattern ")", l_match, this.lastIndex + 1)
+		this.lastIndex := l_searchPosition
 		if (l_searchPosition != 0) {
-			this.lastIndex := l_searchPosition
 			return true
 		}
 		return false
@@ -83,4 +119,4 @@ class regexp {	; --- Static Variables ---	static flags := {i: true, g:false, 
 		}
 		return "/" this.pattern "/" flags
 	}
-}
+}

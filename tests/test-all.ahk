@@ -55,16 +55,16 @@ assert.test(re.lastIndex, 0)
 
 ; omit
 assert.label(".test - correct lastIndex")
-string := "Time is an illusion. Lunchtime doubly so"
+string := "1 2 3"
 re := new regexp(" ")
 re.test(string)
-assert.test(re.lastIndex, 5)
+assert.test(re.lastIndex, 2)
 re.test(string)
-assert.test(re.lastIndex, 8)
+assert.test(re.lastIndex, 4)
 re.test(string)
-assert.test(re.lastIndex, 11)
+assert.test(re.lastIndex, 0)
 re.test(string)
-assert.test(re.lastIndex, 21)
+assert.test(re.lastIndex, 2)
 
 
 assert.label("toString()")
@@ -90,5 +90,5 @@ ExitApp
 QPC(R := 0)
 {
 	static P := 0, F := 0, Q := DllCall("QueryPerformanceFrequency", "Int64P", F)
-	return ! DllCall("QueryPerformanceCounter", "Int64P", Q) + (R ? (P := Q) / F : (Q - P) / F) 
+	return ! DllCall("QueryPerformanceCounter", "Int64P", Q) + (R ? (P := Q) / F : (Q - P) / F)
 }
